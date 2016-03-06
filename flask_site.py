@@ -7,6 +7,7 @@ app.config.from_pyfile('config.py')
 
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
+    
 @app.before_request
 def before_request():
     g.db = connect_db()
@@ -18,10 +19,28 @@ def teardown_request(exception):
         db.close()
 
 @app.route('/')
-def show_entries():
+def home():
     cur = g.db.execute('select title, text from entries order by id desc')
     entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
-    return render_template('show_entries.html', entries=entries)
+    return render_template('home.html', entries=entries)
+
+@app.route('/bio')
+def bio():
+    return render_template('bio.html')
+
+@app.route('/blog')
+def blog():
+    cur = g.db.execute('select title, text from entries order by id desc')
+    entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
+    return render_template('blog.html', entries=entries)
+
+@app.route('/projects')
+def projects():
+    return render_template('projects.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/add', methods=['POST'])
 def add_entry():

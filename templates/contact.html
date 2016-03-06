@@ -1,0 +1,57 @@
+{% extends 'master.html' %}
+{% block body %}
+<h1 style="border-width: 0; text-align: center;">
+    <span id="changing-text">web developer.</span>
+</h1>
+
+<div class="section" id="blog">
+    <h2>from my blog</h2>
+</div>
+<div class="section" id="projects">
+    <h2 style="color: #ffffff; border-bottom: 1px solid white;">projects</h2>
+    <div class="one-third">
+        <a href="http://wbrawner.com/interval-timer" target="_blank"><img class="project-logo" style="max-width: 102px; border-radius: 50%;" src="{{ url_for('static', filename='img/interval-timer.png')  }}"></a>
+        <h3>interval timer app</h3>
+        <p>languages/technologies used:</p>
+        <ul class="project">
+            <li>English</li>
+            <li>HTML/CSS</li>
+            <li>JavaScript</li>
+            <li>AngularJS</li>
+            <li>GIMP</li>
+        </ul>
+        <a href="https://marketplace.firefox.com/app/interval-timer-1/" target="_blank"><img class="ff-store-link" src="{{ url_for('static', filename='img/ff-marketplace.png')  }}"></a>
+        <a href="https://chrome.google.com/webstore/detail/interval-timer/glhbffeiigldedfpeiccmfdigplkeanm" target="_blank"><img class="chrome-webstore-link" src="{{ url_for('static', filename='img/chrome-webstore.png')  }}"></a>
+    </div>
+    <div class="one-third">
+        <a href="http://workout-generator.wbrawner.com/" target="_blank"><img class="project-logo" src="{{ url_for('static', filename='img/workout-generator.png')  }}"></a>
+        <h3>workout generator app</h3>
+        <p>languages/technologies used:</p>
+        <ul class="project">
+            <li>English</li>
+            <li>HTML/CSS</li>
+            <li>JavaScript</li>
+            <li>JQuery</li>
+            <li>PHP</li>
+            <li>Laravel</li>
+            <li>GIMP</li>
+            <li>VIM</li>
+            <li>MySQL</li>
+        </ul>
+    </div>
+    <div class="one-third">
+        <a href="http://www.sinconsa.com/" target="_blank"><img class="project-logo" src="{{ url_for('static', filename='img/sinconsa.png')  }}"></a>
+        <h3>sinconsa consultores</h3>
+        <p>languages/technologies used:</p>
+        <ul class="project">
+            <li>Spanish</li>
+            <li>HTML/CSS</li>
+            <li>JavaScript</li>
+            <li>JQuery</li>
+            <li>CPanel</li>
+            <li>GIMP</li>
+            <li>VIM</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
