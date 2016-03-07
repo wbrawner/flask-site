@@ -168,6 +168,17 @@ input[type='submit'] {
 	border-bottom: 1px solid #002900;
 }
 
+.flash {
+	width: 80%;
+	background-color: rgb(175, 255, 175);
+	color: rgb(0, 41, 0);
+	border: 1px solid rgb(0, 41, 0);
+	max-width: 400px;
+	text-align: center;
+	padding: 10px;
+	margin: 20px auto 0px;
+}
+
 #changing-text {
   position: absolute;
   top: 50%;

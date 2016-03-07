@@ -1,6 +1,7 @@
 from flask import Flask, request, session, g, redirect, url_for, \
     abort, render_template, flash
 from flask.ext.mysqldb import MySQL
+import hashlib
 from admin import admin
 
 app = Flask(__name__)
@@ -26,7 +27,7 @@ def teardown_request(exception):
 @app.route('/')
 def home():
     g.db.execute('SELECT * FROM blog_posts ORDER BY updated_on DESC')
-    entries = [dict(title=row[1], text=row[2], created=row[3].strftime("%B %d, %Y"), updated=row[4].strftime("%B %d, %Y")) for row in g.db.fetchall()]
+    entries = [dict(title=row[1], text=row[2], created=row[5].strftime("%B %d, %Y"), updated=row[6].strftime("%B %d, %Y")) for row in g.db.fetchall()]
     return render_template('home.html', entries=entries)
 
 @app.route('/bio')
@@ -36,7 +37,7 @@ def bio():
 @app.route('/blog')
 def blog():
     g.db.execute('SELECT * FROM blog_posts ORDER BY id DESC')
-    entries = [dict(title=row[1], text=row[2], created=row[3].strftime("%B %d, %Y"), updated=row[4].strftime("%B %d, %Y")) for row in g.db.fetchall()]
+    entries = [dict(title=row[1], text=row[2], created=row[5].strftime("%B %d, %Y"), updated=row[6].strftime("%B %d, %Y")) for row in g.db.fetchall()]
     return render_template('blog.html', entries=entries)
 
 @app.route('/projects')
@@ -47,23 +48,13 @@ def projects():
 def contact():
     return render_template('contact.html')
 
-@app.route('/add', methods=['POST'])
-def add_entry():
-    if not session.get('logged_in'):
-        abort(401)
-    g.db.execute('insert into blog_posts (title, text) values (?, ?)',
-    [request.form['title'], request.form['text']])
-    g.db.commit()
-    flash('New entry was successfully posted')
-    return redirect(url_for('blog'))
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME']:
             error = 'Invalid username'
-        elif request.form['password'] != app.config['PASSWORD']:
+        elif hashlib.sha512(request.form['password'].encode('utf-8')).hexdigest() != app.config['PASSWORD']:
             error = 'Invalid password'
         else:
             session['logged_in'] = True

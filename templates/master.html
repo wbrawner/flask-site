@@ -9,7 +9,9 @@
         <link href='https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/instafeed.min.js')  }}"></script>
-        <?php wp_head(); ?>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/highlight.pack.js')  }}"></script>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='css/styles/zenburn.css') }}">
         <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
        (i[r].q=i[r].q||[]).push(arguments)
@@ -29,9 +31,15 @@
     	    <h1><a href="/">william brawner</a></h1>
     	    <a href="javascript:void(0)" id="menu-icon"><i class="fa fa-bars "></i></a>
 	        <ul id="menu">
+                 {% if session.logged_in and session.admin %}
+                 <li>
+                      <a href="{{ url_for('admin.home')  }}">admin</a>
+                 </li>
+                 {% else %}
 	            <li>
 			<a href="{{ url_for('home')  }}">home</a>
 		    </li>
+                  {% endif %}
 		    <li>
 			<a href="{{ url_for('bio')  }}">bio</a>
 		    </li>
@@ -43,14 +51,6 @@
                  </li>
 		    <li>
 			<a href="{{ url_for('contact')  }}">contact</a>
-		    </li>
-		    <li>
-                    {% if not session.logged_in %}
-                        <a href="{{ url_for('login')  }}">log in</a>
-                    {% else %}
-                        <a href="{{ url_for('logout')  }}">log out</a>
-                    {% endif %}
-			<div class="glow-border"></div>
 		    </li>
 		</ul>
 	    </nav>
