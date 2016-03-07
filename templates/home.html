@@ -1,14 +1,17 @@
 {% extends 'master.html' %}
 {% block body %}
-<h1 style="border-width: 0; text-align: center;">
+<h1 style="border-width: 0px; text-align: center; min-height: 120px; position: relative; overflow: hidden;">
     <span id="changing-text">web developer.</span>
 </h1>
 
 <div class="section" id="blog">
-    <h2>from my blog</h2>
+    <h2 style="margin-top: 0;">from my blog</h2>
     {% for entry in entries %}
-        <h3>{{ entry.title }}</h3>
-        {{ entry.text|safe }}
+        <div class="blog-entry">
+            <h3>{{ entry.title }}</h3>
+            <h5>{{ entry.updated }}</h5>
+            <p>{{ entry.text|safe }}</p>
+        </div>
     {% else %}
         <em>Sorry, I still haven't gotten around to moving my blog posts over!</em>
     {% endfor %}
@@ -67,33 +70,33 @@
     <table>
       <tbody>
         <tr>
-          <td>
+          <th>
             current employer: 
-          </td>
+          </th>
           <td>
             <a href="http://whiterabbit.is">White Rabbit</a>
           </td>
         </tr>
         <tr>
-          <td>
+          <th>
             current occupation:
-          </td>
+          </th>
           <td> 
             web developer
           </td>
         </tr>
         <tr>
-          <td>
+          <th>
             previous occupations: 
-          </td>
+          </th>
           <td>
             cashier, front desk receptionist, gym membership salesman, personal trainer, efl teacher
           </td>
         </tr>
         <tr>
-          <td>
+          <th>
             background:
-          </td>
+          </th>
           <td>
             <ul>
                 <li>13 years old: first time out of the USA - trip to Japan</li>
@@ -103,9 +106,9 @@
           </td>
         </tr>
         <tr>
-          <td>
+          <th>
             languages:
-          </td>
+          </th>
           <td>
             <ul>
                 <li>English</li>

@@ -3,6 +3,7 @@ body {
 	margin:0;
 	padding:0;
 	background-color:#fff;
+	overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -21,12 +22,34 @@ pre {
   margin: auto;
 }
 
+th {text-align: left;}
+
 td {
 	padding: 5px 20px;
 }
 
 td ul {
 	display: inline-block;
+	margin: 5px;
+}
+
+input {
+  background-color: #FFF;
+  color: #002900;
+  border: 1px solid #002900;
+  border-radius: 15px;
+  padding: 5px;
+  display: block;
+  margin: 5px auto;
+  width: 95%;
+  max-width: 450px;
+  text-align: center;
+}
+input[type='submit'] {
+  color: #FFFFFF;
+  background-color: #002900;
+  max-width: 464px;
+  cursor: pointer;
 }
 
 #nav {
@@ -145,9 +168,41 @@ td ul {
 	border-bottom: 1px solid #002900;
 }
 
+#changing-text {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+}
+
 .section {
 	border-radius: 40px;
 	padding:1px 15px 15px 15px;
+}
+
+.blog-entry {
+	margin: 5px 20px 15px;
+	padding: 0 20px;
+}
+
+.blog-entry:last-of-type {
+	margin-bottom: 5px;
+}
+
+.blog-entry h3, .blog-entry h5, .blog-entry p {
+	margin: 5px 0;
+}
+
+.blog-entry h5 {
+	font-style: italic;
+}
+
+.one-half {
+  width: 45%;
+  margin: 0 2.5%;
+  float: left;
 }
 
 .one-third {
@@ -175,6 +230,13 @@ a.insta-link {
     display: inline-block;
     float: left;
     position: relative;
+    padding: 10px;
+    width: 155px;
+    margin: auto;
+}
+
+a.insta-link img {
+	border-radius:  50%;
 }
 
 a.insta-link span {
@@ -218,9 +280,6 @@ span.insta-caption {
 
 div#instafeed {
     overflow: hidden;
-    width: 95%;
-    max-width: 1100px;
-    margin: 60px auto;
 }
 
 #home img {
@@ -276,6 +335,10 @@ div#instafeed {
 	margin: 5px auto;
 }
 
+#projects a:hover {
+	color: #fff;
+}
+
 .project {
 	width:75%%;
 	margin: 0 auto 10px;
@@ -298,20 +361,45 @@ div#instafeed {
 	border: 1px solid white;
 }
 
+.project-description {
+	margin: 5px 5px 50px;
+	overflow: hidden;
+	float: left;
+}
+
+.project-description:last-of-type {
+	margin: 5px;
+}
+
+.project-description h3 {
+	margin-top: 0;
+}
+
+.project-description .project-logo {
+	border: 1px solid black;
+}
+
 .ff-store-link {
 	height: auto;
 	width: 40%;
 	margin: auto;
+	max-width: 172px;
 }
 
 .chrome-webstore-link {
 	height: auto;
 	width: 51%;
 	margin: auto;
+	max-width: 206px;
 }
 
 .project h4 {
 	text-align:center;
+}
+
+.logo-link {
+	float: left;
+	margin-right: 20px;
 }
 
 footer {
@@ -365,35 +453,31 @@ a.social-link:hover, a.social-link:active {
     color: #fff;
 }
 
-@media all and (max-width: 1192px) {
-	div#instafeed {
-		max-width: 510px;
-	}
-}
-
 @media screen and (max-width:1024px) {
 	.main-nav, #nav {
 		position: absolute;
 	}
 
 	#menu {
-		display:none;
+		display:block;
 		width:100vw;
 		position: absolute;
 		top: 60px;
-		left: 0;
+		left: 100%;
 		padding:0;
 		background-color:#002900;
 		float:none;
+		-webkit-transition: left 0.5s ease;
+		transition: left 0.5s ease;
 	}
 
 	#menu-icon {
 		position:absolute;
 		right:30px;
 		display:inline;
-		height:20px;
 		width:auto;
-		margin:10px;
+		margin: 2px 10px;
+		font-size: 24px;
 	}
 
 	.main-nav li {
@@ -435,9 +519,15 @@ a.social-link:hover, a.social-link:active {
 }
 
 @media all and (max-width: 768px) {
-  div#instafeed {
-    max-width: 340px;
-  }
+	.one-half {
+		width: 95%;
+		text-align: center;
+	}
+	th, td {
+		float: left;
+		clear: left;
+		margin-left: 20px;
+	}
 }
 
 @media all and (max-width: 870px) {
@@ -458,16 +548,4 @@ a.social-link:hover, a.social-link:active {
 		width: 90%;
 		margin: 5px 5% 40px;
 	}
-}
-
-@media all and (max-width: 596px) {
-  div#instafeed {
-    max-width: 340px;
-  }
-}
-
-@media all and (max-width: 414px) {
-  div#instafeed {
-    max-width: 170px;
-  }
 }

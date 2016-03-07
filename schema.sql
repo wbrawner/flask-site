@@ -1,7 +1,7 @@
-drop table if exists entries;
-create table entries (
-      id integer primary key autoincrement,
-      title text not null,
-      text text not null
-
+CREATE TABLE blog_posts (
+    id INT( 6 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+    title VARCHAR( 500 ) DEFAULT NULL ,
+    text VARCHAR( 10000 ) DEFAULT NULL ,
+    created_on DATETIME NOT NULL ,
+    updated_on TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP
 );

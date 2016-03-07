@@ -1,13 +1,18 @@
-import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, \
     abort, render_template, flash
+from flask.ext.mysqldb import MySQL
+from admin import admin
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
+app.secret_key = app.config['SECRET_KEY']
+mysql = MySQL(app)
+
+app.register_blueprint(admin, url_prefix='/admin')
 
 def connect_db():
-    return sqlite3.connect(app.config['DATABASE'])
-    
+    return  mysql.connection.cursor()
+
 @app.before_request
 def before_request():
     g.db = connect_db()
@@ -20,8 +25,8 @@ def teardown_request(exception):
 
 @app.route('/')
 def home():
-    cur = g.db.execute('select title, text from entries order by id desc')
-    entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
+    g.db.execute('SELECT * FROM blog_posts ORDER BY updated_on DESC')
+    entries = [dict(title=row[1], text=row[2], created=row[3].strftime("%B %d, %Y"), updated=row[4].strftime("%B %d, %Y")) for row in g.db.fetchall()]
     return render_template('home.html', entries=entries)
 
 @app.route('/bio')
@@ -30,8 +35,8 @@ def bio():
 
 @app.route('/blog')
 def blog():
-    cur = g.db.execute('select title, text from entries order by id desc')
-    entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
+    g.db.execute('SELECT * FROM blog_posts ORDER BY id DESC')
+    entries = [dict(title=row[1], text=row[2], created=row[3].strftime("%B %d, %Y"), updated=row[4].strftime("%B %d, %Y")) for row in g.db.fetchall()]
     return render_template('blog.html', entries=entries)
 
 @app.route('/projects')
@@ -46,11 +51,11 @@ def contact():
 def add_entry():
     if not session.get('logged_in'):
         abort(401)
-    g.db.execute('insert into entries (title, text) values (?, ?)',
+    g.db.execute('insert into blog_posts (title, text) values (?, ?)',
     [request.form['title'], request.form['text']])
     g.db.commit()
     flash('New entry was successfully posted')
-    return redirect(url_for('show_entries'))
+    return redirect(url_for('blog'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -63,14 +68,14 @@ def login():
         else:
             session['logged_in'] = True
             flash('You were logged in')
-            return redirect(url_for('show_entries'))
+            return redirect(url_for('admin.home'))
     return render_template('login.html', error=error)
 
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
-    return redirect(url_for('show_entries'))
+    return redirect(url_for('blog'))
 
 if __name__ == '__main__':
     app.run()

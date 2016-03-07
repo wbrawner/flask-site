@@ -1,57 +1,27 @@
 {% extends 'master.html' %}
 {% block body %}
-<h1 style="border-width: 0; text-align: center;">
-    <span id="changing-text">web developer.</span>
-</h1>
-
-<div class="section" id="blog">
-    <h2>from my blog</h2>
-</div>
-<div class="section" id="projects">
-    <h2 style="color: #ffffff; border-bottom: 1px solid white;">projects</h2>
-    <div class="one-third">
-        <a href="http://wbrawner.com/interval-timer" target="_blank"><img class="project-logo" style="max-width: 102px; border-radius: 50%;" src="{{ url_for('static', filename='img/interval-timer.png')  }}"></a>
-        <h3>interval timer app</h3>
-        <p>languages/technologies used:</p>
-        <ul class="project">
-            <li>English</li>
-            <li>HTML/CSS</li>
-            <li>JavaScript</li>
-            <li>AngularJS</li>
-            <li>GIMP</li>
-        </ul>
-        <a href="https://marketplace.firefox.com/app/interval-timer-1/" target="_blank"><img class="ff-store-link" src="{{ url_for('static', filename='img/ff-marketplace.png')  }}"></a>
-        <a href="https://chrome.google.com/webstore/detail/interval-timer/glhbffeiigldedfpeiccmfdigplkeanm" target="_blank"><img class="chrome-webstore-link" src="{{ url_for('static', filename='img/chrome-webstore.png')  }}"></a>
+<div class="section" id="contact">
+    <h2>contact</h2>
+    <div class="one-half">
+            <a class="twitter-timeline"  href="https://twitter.com/BillyBrawner1" data-widget-id="706308392311136256">Tweets by @BillyBrawner1</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </div>
-    <div class="one-third">
-        <a href="http://workout-generator.wbrawner.com/" target="_blank"><img class="project-logo" src="{{ url_for('static', filename='img/workout-generator.png')  }}"></a>
-        <h3>workout generator app</h3>
-        <p>languages/technologies used:</p>
-        <ul class="project">
-            <li>English</li>
-            <li>HTML/CSS</li>
-            <li>JavaScript</li>
-            <li>JQuery</li>
-            <li>PHP</li>
-            <li>Laravel</li>
-            <li>GIMP</li>
-            <li>VIM</li>
-            <li>MySQL</li>
-        </ul>
-    </div>
-    <div class="one-third">
-        <a href="http://www.sinconsa.com/" target="_blank"><img class="project-logo" src="{{ url_for('static', filename='img/sinconsa.png')  }}"></a>
-        <h3>sinconsa consultores</h3>
-        <p>languages/technologies used:</p>
-        <ul class="project">
-            <li>Spanish</li>
-            <li>HTML/CSS</li>
-            <li>JavaScript</li>
-            <li>JQuery</li>
-            <li>CPanel</li>
-            <li>GIMP</li>
-            <li>VIM</li>
-        </ul>
-    </div>
+    <div class="one-half">
+        <!-- Facebook Badge START --><a href="https://www.facebook.com/wpbrawner" title="Billy Brawner" style="font-family: &quot;lucida grande&quot;,tahoma,verdana,arial,sans-serif; font-size: 11px; font-variant: normal; font-style: normal; font-weight: normal; color: #3B5998; text-decoration: none;" target="_TOP">Billy Brawner</a><span style="font-family: &#039;lucida grande&#039;,tahoma,verdana,arial,sans-serif;font-size: 11px;line-height: 16px;font-variant: normal;font-style: normal;font-weight: normal;color: #555555;text-decoration: none;">&nbsp;|&nbsp;</span><a href="https://www.facebook.com/badges/" title="Make your own badge!" style="font-family: &quot;lucida grande&quot;,tahoma,verdana,arial,sans-serif; font-size: 11px; font-variant: normal; font-style: normal; font-weight: normal; color: #3B5998; text-decoration: none;" target="_TOP">Create Your Badge</a><br /><a href="https://www.facebook.com/wpbrawner" title="Billy Brawner" target="_TOP"><img class="img" src="https://badge.facebook.com/badge/1058965332.287.1992111354.png" style="border: 0px;" alt="" /></a><!-- Facebook Badge END -->
+        <div id="instafeed">
+            <script type="text/javascript">
+            {%  raw %}
+                 var feed = new Instafeed({
+                     get: 'user',
+                     userId: 2113424423,
+                     limit: 6,
+                     accessToken: '2113424423.467ede5.2a622e2c959943169a932f91a1972302',
+                     template:  '<a class="insta-link" href="{{link}}" target="_blank"><span class="insta-caption-bg"></span><span class="insta-caption">{{caption}}</span><img class="insta-foto" src="{{image}}" /></a>'
+                 });
+                 feed.run();
+            {%  endraw %}
+            </script>
+        </div>
+    </div>  
 </div>
 {% endblock %}
