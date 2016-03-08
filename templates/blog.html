@@ -1,23 +1,12 @@
 {% extends "master.html" %}
 {% block body %}
-  {% if session.logged_in %}
-    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
-      <dl>
-        <dt>Title:
-        <dd><input type=text size=30 name=title>
-        <dt>Text:
-        <dd><textarea name=text rows=5 cols=40></textarea>
-        <dd><input type=submit value=Share>
-      </dl>
-    </form>
-  {% endif %}
   <div class="section">
       <h2>blog</h2>
   {% for entry in entries %}
       <div class="blog-entry">
-            <h3>{{ entry.title }}</h3>
+            <h3><a href="{{ url_for('blog') }}/{{ entry.url }}">{{ entry.title }}</a></h3>
             <h5>{{ entry.updated }}</h5>
-            <p>{{ entry.text|safe }}</p>
+            {{ entry.text|safe }}
         </div>
   {% else %}
       <em>Sorry, I still haven't gotten around to moving my blog posts over!</em>

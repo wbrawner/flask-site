@@ -1,6 +1,19 @@
 {% extends 'admin/master.html' %}
 {% block body %}
-<h1 style="border-width: 0px; text-align: center; min-height: 120px; position: relative; overflow: hidden;">
-    <span>congrats, it worked</span>
-</h1>
+<div class="section">
+    <h2>new post</h2>
+    <form action="{{ url_for('admin.new_post') }}" method="post">
+        <dl>
+            <dt>Title:</dt>
+            <dd><input type="text" size=30 name="title"></dd>
+            <dt>Text:</dt>
+            <dd><textarea name="text" rows=5 cols=40></textarea></dd>
+            <dt>Category:</dt>
+            <dd><input type="text" size=30 name="category"></dd>
+            <dt>Tags:</dt>
+            <dd><input type="text" size=30 name="tags"></dd>
+            <dd><input type="submit" value="Publish"></dd>
+        </dl>
+    </form>
+</div>
 {% endblock %}

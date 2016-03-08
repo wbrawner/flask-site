@@ -1,0 +1,33 @@
+{% extends "admin/master.html" %}
+{% block body %}
+<div class="section">
+    <h2>posts</h2>
+    <a href="{{ url_for('admin.new_post') }}">Add new post</a>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                  <th>title</th>
+                  <th>category</th>
+                  <th>tags</th>
+                  <th>comments</th>
+                  <th>published</th>
+                  <th>updated</th>
+              </tr>
+        </thead>
+        <tbody>
+              {% for entry in entries %}
+              <tr>
+                    <td>{{ entry.title }}</td>
+                    <td>{{ entry.category }}</td>
+                    <td>{{ entry.tags }}</td>
+                    <td>{{ entry.comments }}</td>
+                    <td>{{ entry.created }}</td>
+                    <td>{{ entry.updated }}</td>
+                </tr>
+              {% else %}
+              <em>Get to writing!</em>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+{% endblock %}

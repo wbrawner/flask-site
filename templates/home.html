@@ -8,9 +8,9 @@
     <h2 style="margin-top: 0;">from my blog</h2>
     {% for entry in entries %}
         <div class="blog-entry">
-            <h3>{{ entry.title }}</h3>
+            <h3><a href="{{ url_for('blog') }}/{{ entry.url }}">{{ entry.title }}</a></h3>
             <h5>{{ entry.updated }}</h5>
-            <p>{{ entry.text|safe }}</p>
+            {{ entry.text|safe }}
         </div>
     {% else %}
         <em>Sorry, I still haven't gotten around to moving my blog posts over!</em>
