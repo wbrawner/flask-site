@@ -4,7 +4,7 @@ from flask.ext.mysqldb import MySQL
 import hashlib
 from flask_debugtoolbar import DebugToolbarExtension
 from admin import admin
-from flaskext.mail import Mail, Message
+from flask.ext.mail import Mail, Message
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
