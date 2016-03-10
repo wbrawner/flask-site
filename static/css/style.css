@@ -90,6 +90,11 @@ input[type='submit'] {
 	text-decoration:none;
 }
 
+#menu-container {
+	overflow-x: hidden;
+	display: inline;
+}
+
 .main-nav ul {
 	float:right;
 	margin-top:-5px;
@@ -492,16 +497,16 @@ a.social-link:hover, a.social-link:active {
 	}
 
 	#menu {
-		display:block;
-		width:100vw;
+		display:none;
+		opacity:0;
+		width:100%;
 		position: absolute;
 		top: 60px;
-		left: 100%;
 		padding:0;
 		background-color:#002900;
 		float:none;
-		-webkit-transition: left 0.5s ease;
-		transition: left 0.5s ease;
+		-webkit-transition: opacity 0.5s ease;
+		transition: opacity 0.5s ease;
 	}
 
 	#menu-icon {
