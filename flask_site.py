@@ -5,6 +5,7 @@ import hashlib
 from flask_debugtoolbar import DebugToolbarExtension
 from admin import admin
 from flask.ext.mail import Mail, Message
+from wtforms import Form, TextField, TextAreaField, validators
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -27,6 +28,11 @@ def teardown_request(exception):
     db = getattr(g, 'db', None)
     if db is not None:
         db.close()
+
+class ContactForm(Form):
+    name = TextField('Name', [validators.Length(min=4, max=25)])
+    email = TextField('Email Address', [validators.Length(min=6, max=35)])
+    message = TextAreaField('Message', [validators.Length(min=6, max=5000)])
 
 @app.route('/')
 def home():
@@ -57,12 +63,16 @@ def projects():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    if request.method == 'POST':
-        request.form['name']
-        request.form['email']
-        request.form['message']
+    form = ContactForm(request.form)
+    if request.method == 'POST' and form.validate():
+        msg = Message(subject='New Message From wbrawner.com',
+            body="Name: {0}\nEmail: {1}\nMessage: {2}".format(request.form['name'], request.form['email'], request.form['message']),
+            recipients=["billybrawner@gmail.com"])
+        mail.send(msg)
+        flash('Thanks, your message was sent.')
+        return redirect(url_for('contact'))
     else:
-        return render_template('contact.html')
+        return render_template('contact.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

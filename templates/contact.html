@@ -2,11 +2,14 @@
 {% block body %}
 <div class="section" id="contact">
     <h2>contact</h2>
-    <form method="{{ url_for('contact') }}">
-        <input type="text" name="name">
-        <input type="text" name="email">
-        <textarea name="message"></textarea>
-        <input type="submit" value="submit">
+    {% from "_formhelper.html" import render_field %}
+    <form method="post" action="{{ url_for('contact') }}">
+      <dl>
+        {{ render_field(form.name) }}
+        {{ render_field(form.email) }}
+        {{ render_field(form.message) }}
+      </dl>
+      <p style="margin-left: 40px;"><input type="submit" value="Send">
     </form>
     <div class="one-half">
             <a class="twitter-timeline"  href="https://twitter.com/BillyBrawner1" data-widget-id="706308392311136256">Tweets by @BillyBrawner1</a>

@@ -1,8 +1,9 @@
 MYSQL_USER = 'user'
 MYSQL_PASSWORD = 'password'
-MYSQL_HOST = 'localhost'
+MYSQL_HOST = '%'
 MYSQL_DB = 'database'
 DEBUG = True
-SECRET_KEY = 'development key'
+SECRET_KEY = '\xd9\n\xe6[Hy\xf6\xac\x00\xd3b\xc2\xb3\x98Ii\x8e\x1b\xcb\xcc\x89'K\x1f'
 USERNAME = 'username'
 PASSWORD = 'password'
+MAIL_DEFAULT_SENDER = "admin@example.com"
