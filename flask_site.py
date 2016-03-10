@@ -4,13 +4,14 @@ from flask.ext.mysqldb import MySQL
 import hashlib
 from flask_debugtoolbar import DebugToolbarExtension
 from admin import admin
-
+from flaskext.mail import Mail, Message
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
 app.secret_key = app.config['SECRET_KEY']
 mysql = MySQL(app)
 toolbar = DebugToolbarExtension(app)
+mail = Mail(app)
 
 app.register_blueprint(admin, url_prefix='/admin')
 
@@ -54,9 +55,14 @@ def blog_post(url):
 def projects():
     return render_template('projects.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template('contact.html')
+    if request.method == 'POST':
+        request.form['name']
+        request.form['email']
+        request.form['message']
+    else:
+        return render_template('contact.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

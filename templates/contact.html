@@ -2,6 +2,12 @@
 {% block body %}
 <div class="section" id="contact">
     <h2>contact</h2>
+    <form method="{{ url_for('contact') }}">
+        <input type="text" name="name">
+        <input type="text" name="email">
+        <textarea name="message"></textarea>
+        <input type="submit" value="submit">
+    </form>
     <div class="one-half">
             <a class="twitter-timeline"  href="https://twitter.com/BillyBrawner1" data-widget-id="706308392311136256">Tweets by @BillyBrawner1</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
