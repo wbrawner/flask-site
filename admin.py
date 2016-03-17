@@ -25,11 +25,27 @@ def posts():
 
 @admin.route('/new-post', methods=['GET', 'POST'])
 def new_post():
+    def format_post(text):
+        code = False
+        text = text.split("\n")
+        new_text = []
+        for line in text:
+            if line[:4] == "<pre":
+                code = True
+                break
+            if line[-6:] == "</pre>":
+                code = False
+                break
+            if code == True:
+                break
+            new_text.append("<p>" + line.replace("'", "\\'") + "</p>")
+        return "".join(new_text)
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     else:
         if request.method == 'POST':
-            g.db.execute("insert into blog_posts (title, text, category, tags, url, created_on, updated_on) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')" .format(request.form['title'], request.form['text'], request.form['category'], request.form['tags'], request.form['title'].lower().replace(' ', '-'), str(datetime.datetime.now()), str(datetime.datetime.now())))
+            formatted_text = format_post(request.form['text'])
+            g.db.execute("insert into blog_posts (title, text, category, tags, url, created_on, updated_on) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')" .format(request.form['title'], formatted_text, request.form['category'], request.form['tags'], request.form['title'].lower().replace(' ', '-').replace(',', '-').replace('--', '-'), str(datetime.datetime.now()), str(datetime.datetime.now())))
             flask_site.mysql.connection.commit()
             flash('New post added successfully')
             return redirect(url_for('blog'))
