@@ -36,7 +36,7 @@ class ContactForm(Form):
 
 @app.route('/')
 def home():
-    g.db.execute('SELECT * FROM blog_posts ORDER BY updated_on DESC')
+    g.db.execute('SELECT * FROM blog_posts ORDER BY updated_on DESC LIMIT 3')
     entries = [dict(title=row[1], text=row[2], url=row[5], created=row[6].strftime("%B %d, %Y"), updated=row[7].strftime("%B %d, %Y")) for row in g.db.fetchall()]
     return render_template('home.html', entries=entries)
 
