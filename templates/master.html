@@ -57,6 +57,9 @@
         </div>
 	    </nav>
         <div class="container">
+            <div class="mobile-bg">
+              <img src="{{ url_for('static', filename='img/bg.jpg') }}">
+            </div>
             <div class="content">
             {% for message in get_flashed_messages() %}
                 <div class=flash>{{ message  }}</div>
