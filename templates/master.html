@@ -85,17 +85,11 @@
 	        var menuVisible = false;
 	        $('#menu-icon').click(function() {
 	            if (menuVisible) {
-                    $('#menu').css({'opacity':'0'});
-                    setTimeout(function() {
-                        $('#menu').css({'display':'none'});
-                        }, 500);
+                  $('#menu').css({'max-height':'0'});
 	                menuVisible = false;
 	                return;
 	            }
-                $('#menu').css({'display':'block'});
-                setTimeout(function() {
-                    $('#menu').css({'opacity':'1'});
-                        }, 100);
+              $('#menu').css({'max-height':'200px'});
 	            menuVisible = true;
 	        });
 	    });

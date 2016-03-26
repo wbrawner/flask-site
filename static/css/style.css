@@ -11,8 +11,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-	-webkit-transition: color 0.5s, background-color 0.5s; /* Safari */
-  transition: color 0.5s, background-color 0.5s;
+	-webkit-transition: all 0.5s; /* Safari */
+	transition: all 0.5s;
 }
 
 pre {
@@ -124,10 +124,11 @@ input[type='submit'] {
 	font-weight:bold;
 	border-radius: 40px;
 	width: 80%;
+	background: none;
 }
 
 .main-nav li a:hover, .main-nav li a:active {
-	background-color:#5C995C;
+	background-color: #5C995C;
 }
 
 .main-nav p {
@@ -157,7 +158,12 @@ input[type='submit'] {
 
 .container {
     min-height: 100vh - 60px;
-    padding-top: 60px;
+    padding: 60px 0 20px;
+    background-image: url('/static/img/bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .content {
@@ -167,10 +173,10 @@ input[type='submit'] {
 }
 
 .content h1, .content h2 {
-	color:#002900;
+	color:#fff;
 	text-align:left;
 	padding: 5px;
-	border-bottom: 1px solid #002900;
+	border-bottom: 1px solid #fff;
 }
 
 .flash {
@@ -195,9 +201,21 @@ input[type='submit'] {
 
 .section {
 	border-radius: 40px;
-	padding:1px 15px 15px 15px;
+	border: 2px solid #fff;
+	padding:15px;
+	background-image: url('/static/img/bg-blur.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	overflow: hidden;
+	color: #fff;
+	text-shadow: black 0px 0px 2px;
+	box-shadow: 0px 0px 10px #000 inset;
 }
-
+.section:first-of-type {
+	margin-top: 30px;
+}
 .blog-entry {
 	margin: 5px 20px 15px;
 	padding: 0 20px;
@@ -422,7 +440,6 @@ footer {
 	display: block;
 	width: 100%;
 	background-color: #002900;
-	border-top: 3px solid #fff;
 	text-align: center;
 	overflow: hidden;
 	color: #fff;
@@ -446,11 +463,14 @@ a.social-link:hover, a.social-link:active {
 }
 
 .section a:link, .section a:visited {
-    color: #476C47;
+    color: rgb(178, 255, 182);
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+    text-decoration: none;
 }
 
 .section a:hover, .section a:active {
-    color: #000;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
 }
 
 .entry-footer {
@@ -497,16 +517,17 @@ a.social-link:hover, a.social-link:active {
 	}
 
 	#menu {
-		display:none;
-		opacity:0;
+		max-height: 0;
+		overflow: hidden;
 		width:100%;
 		position: absolute;
 		top: 60px;
+		left: 0;
 		padding:0;
 		background-color:#002900;
 		float:none;
-		-webkit-transition: opacity 0.5s ease;
-		transition: opacity 0.5s ease;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
 	}
 
 	#menu-icon {
