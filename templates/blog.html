@@ -1,15 +1,17 @@
 {% extends "master.html" %}
 {% block body %}
-  <div class="section">
-      <h2>blog</h2>
-  {% for entry in entries %}
+<div class="section-wrapper">
+    <div class="section">
+        <h2>blog</h2>
+    {% for entry in entries %}
       <div class="blog-entry">
             <h3><a href="{{ url_for('blog') }}/{{ entry.url }}">{{ entry.title }}</a></h3>
             <h5>{{ entry.updated }}</h5>
             {{ entry.text|safe }}
         </div>
-  {% else %}
+    {% else %}
       <em>Sorry, I still haven't gotten around to moving my blog posts over!</em>
-  {% endfor %}
-  </div>
+    {% endfor %}
+    </div>
+</div>
 {% endblock %}

@@ -6,6 +6,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from admin import admin
 from flask.ext.mail import Mail, Message
 from wtforms import Form, TextField, TextAreaField, validators
+from datetime import datetime
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -33,6 +34,10 @@ class ContactForm(Form):
     name = TextField('Name', [validators.Length(min=4, max=25)])
     email = TextField('Email Address', [validators.Length(min=6, max=35)])
     message = TextAreaField('Message', [validators.Length(min=6, max=5000)])
+
+@app.context_processor
+def get_current_year():
+    return dict(current_year=datetime.now().year)
 
 @app.route('/')
 def home():

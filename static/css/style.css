@@ -4,14 +4,14 @@ body {
 	padding:0;
 	background-color:#fff;
 	overflow-x: hidden;
-	text-shadow: 0.5px 0 0 #000, -0.5px 0 0 #000, 0 0.5px 0 #000, 0 -0.5px 0 #000, 0.5px 0.5px #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, #menu-icon {
 	font-family: 'Ubuntu', sans-serif;
+	text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
-a {
+* {
 	-webkit-transition: all 0.5s; /* Safari */
 	transition: all 0.5s;
 }
@@ -57,10 +57,11 @@ input[type='submit'] {
 	position:fixed;
 	top:0;
 	margin:0;
-	background-color:#002900;
+	background: linear-gradient(#F5F5F5, #CCCCCC);
 	height:60px;
 	width:100vw;
 	z-index: 999;
+	box-shadow: 0 1px 10px #000;
 }
 
 .main-nav {
@@ -120,7 +121,7 @@ input[type='submit'] {
 .main-nav li a:link, .main-nav li a:visited {
 	text-decoration:none;
 	text-align:center;
-	color:white;
+	color: #000;
 	padding:5px;
 	margin:0 auto;
 	font-size:16px;
@@ -131,7 +132,8 @@ input[type='submit'] {
 }
 
 .main-nav li a:hover, .main-nav li a:active {
-	background-color: #5C995C;
+	/*background-color: #5C995C;*/
+	background: linear-gradient(#CCCCCC, #F5F5F5);
 }
 
 .main-nav p {
@@ -218,6 +220,9 @@ input[type='submit'] {
 }
 .section:first-of-type {
 	margin-top: 30px;
+}
+.section p {
+    text-shadow: 0 0 30px #000;
 }
 .blog-entry {
 	margin: 5px 20px 15px;
@@ -306,20 +311,6 @@ div#instafeed {
     overflow: hidden;
 }
 
-#home img {
-	border-radius:50%;
-	height:auto;
-	width:150px;
-	display:inline-block;
-	float:none;
-	margin:10px;
-}
-
-#about {
-	background-color:white;
-	padding:1px 15px 15px 15px;
-}
-
 .desktop {
 	display:inline-block;
 	width:70%;
@@ -340,15 +331,9 @@ div#instafeed {
 }
 
 #projects {
-	background-color:#002900;
 	color:white;
 	margin:50px auto;
 	overflow: hidden;
-}
-
-#projects h2 {
-	 color: #ffffff; 
-	 border-bottom: 1px solid white;
 }
 
 #projects h3 {
@@ -426,13 +411,14 @@ div#instafeed {
 	margin-right: 20px;
 }
 
-footer {
-	display: block;
-	width: 100%;
-	background-color: #002900;
-	text-align: center;
-	overflow: hidden;
-	color: #fff;
+#contact p {
+    width: 50%;
+    display: inline-block;
+}
+
+p.contact-btns {
+    float: right;
+    text-align: right;
 }
 
 a#menu-icon {
@@ -445,7 +431,7 @@ a.social-link {
 }
 
 a.social-link:link, a.social-link:visited {
-	color: #fff;
+	color: #000;
 }
 
 a.social-link:hover, a.social-link:active {
@@ -499,17 +485,12 @@ a.social-link:hover, a.social-link:active {
 
 .admin-table th:first-child, .admin-table td:first-child {
 	width: 50%;
-}
 
+}
 @media screen and (max-width:1024px) {
-	* {
-		z-index: 99;
-		position: relative;
-	}
 	.main-nav, #nav {
 		position: absolute;
 	}
-
 	#menu {
 		max-height: 0;
 		overflow: hidden;
@@ -518,12 +499,11 @@ a.social-link:hover, a.social-link:active {
 		top: 60px;
 		left: 0;
 		padding:0;
-		background-color:#002900;
+		background-color:#CCCCCC;
 		float:none;
 		-webkit-transition: all 0.5s ease;
 		transition: all 0.5s ease;
 	}
-
 	#menu-icon {
 		position:absolute;
 		right:30px;
@@ -532,35 +512,33 @@ a.social-link:hover, a.social-link:active {
 		margin: 2px 10px;
 		font-size: 24px;
 	}
-
 	.main-nav li {
 		display:block;
 		margin:0 auto;
 		padding:0;
-		background-color:#002900;
+		background-color:#CCCCCC;
 		width:100%;
 	}
-
 	.main-nav li a {
 		width:90%;
 		margin: 0 auto;
 	}
-
 	.desktop {
 		display:none;
 	}
-
+	.content {
+		position: relative;
+		z-index: 9;
+	}
 	.glance {
 		width:95%;
 		margin:auto;
 	}
-
 	.project {
 		display:block;
 		width:95%;
 		margin:auto;
 	}
-
 	.project-logo {
 		display: block;
 		float:none;
@@ -572,10 +550,12 @@ a.social-link:hover, a.social-link:active {
 	.container, .section {
 		background-image: none;
 	}
+	.section {
+		background: rgba(0, 41, 0, 0.75);
+	}
 	.mobile-bg {
 		display: block;
 		position: fixed;
-		z-index: 0;
 		height: 100%;
 		top: 0;
 		width: 100%;
@@ -587,26 +567,6 @@ a.social-link:hover, a.social-link:active {
 		top: 0;
 		right: 0;
 		bottom: 0;
-	}
-	.section-bg {
-		display: block;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    right: 0;
-	    bottom: 0;
-	    border-radius: 40px;
-	}
-	.section-wrapper {
-	    overflow: hidden;
-	    position: relative;
-	}
-	.section-bg img {
-	    position: fixed;
-	    top: 0;
-	    left: 0;
-	    right: 0;
-	    bottom: 0;
 	}
 }
 
@@ -639,5 +599,16 @@ a.social-link:hover, a.social-link:active {
 	.one-third {
 		width: 90%;
 		margin: 5px 5% 40px;
+	}
+}
+
+@media all and (max-width: 440px) {
+	.blog-entry {
+		padding: 0 5px;
+	}
+	#contact p {
+		float: none !important;
+		width: 100%;
+		text-align: center;
 	}
 }

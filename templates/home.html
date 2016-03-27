@@ -5,9 +5,6 @@
 </h1>
 <div class="section-wrapper">
     <div class="section" id="blog">
-        <div class="section-bg">
-            <img src="{{ url_for('static', filename='img/bg-blur.jpg') }}">
-        </div>
         <h2 style="margin-top: 0;">from my blog</h2>
         {% for entry in entries %}
             <div class="blog-entry">
@@ -23,9 +20,6 @@
 </div>
 <div class="section-wrapper">
     <div class="section" id="projects">
-        <div class="section-bg">
-            <img src="{{ url_for('static', filename='img/bg-blur.jpg') }}">
-        </div>
         <h2>projects</h2>
         <div class="one-third">
             <a href="http://wbrawner.com/interval-timer" target="_blank"><img class="project-logo" style="max-width: 102px; border-radius: 50%;" src="{{ url_for('static', filename='img/interval-timer.png')  }}"></a>
@@ -76,9 +70,6 @@
 </div>
 <div class="section-wrapper">
     <div class="section" id="bio">
-        <div class="section-bg">
-            <img src="{{ url_for('static', filename='img/bg-blur.jpg') }}">
-        </div>
         <h2>quick facts</h2>
         <table>
           <tbody>

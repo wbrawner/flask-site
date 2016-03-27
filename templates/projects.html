@@ -1,8 +1,9 @@
 {% extends 'master.html' %}
 {% block body %}
-<div class="section">
-    <h2>projects</h2>
-       <div class="project-description">
+<div class="section-wrapper">
+    <div class="section">
+        <h2>projects</h2>
+        <div class="project-description">
             <h3>interval timer app</h3>
             <p><a href="http://wbrawner.com/interval-timer" target="_blank" class="logo-link"><img class="project-logo" style="max-width: 102px; border-radius: 50%;" src="{{ url_for('static', filename='img/interval-timer.png')  }}"></a>The interval timer app was a little experiment of mine to learn AngularJS and try something new. When I wrote it, I was using FirefoxOS on my phone, and working out from my apartment. While there were apps that ran an interval timer, there was no app that allowed you to customize the intervals for the timer. All of them basically gave you the times and cycles, and you had to comply. I decided that that wasn't good enough for me, so I threw together this app and published it to the Firefox Marketplace. Later, once FirefoxOS was discontinued, I migrated back to Android, and published the app in the Google Chrome Webstore. </p>
             <p>The interval timer app is completely open source, but as of this moment, I'm the only contributor. If you're interested, you can find the code on <a href="https://github.com/wbrawner/interval-timer">GitHub</a></p>
@@ -23,5 +24,6 @@
             <p><a href="http://wbrawner.com/" target="_blank" class="logo-link"><img class="project-logo" style="max-width: 102px; border: 0;" src="{{ url_for('static', filename='img/favicon.png')  }}"></a>This site that you're looking at right now was also built by yours truly. It began as a basic HTML/CSS single-page website, then I decided to charge it up with WordPress and move a few things to their own pages. The motivation behind this move was that I had been using WordPress quite a bit in my work at the time, so I wanted to learn the ins and outs in order to do my job better. Some time later, I stopped getting so many WordPress tasks and so my desire to learn it faded a bit. I have nothing against WordPress, but I wanted to get back to my Python roots, and have a bit more control over everything running. Thus, I rewrote my website in Python using Flask, not for work or any other professional necessity, but simply for the joy of writing code in a language I'm more familiar with.</p>
             <p>I decided to make my personal website open source as well. If you're interested, you can find the code on <a href="https://github.com/wbrawner/flask-site">GitHub</a></p>
         </div>
+    </div>
 </div>
 {% endblock %}

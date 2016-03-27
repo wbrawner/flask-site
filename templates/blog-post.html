@@ -1,10 +1,12 @@
 {% extends 'master.html' %}
 {% block body %}
 {% for data in post %}
-<div class="section">
-      <h2>{{ data.title }}</h2>
-      <em>{{ data.updated }}</em>
-      {{ data.text | safe }}
+<div class="section-wrapper">
+	<div class="section">
+        <h2>{{ data.title }}</h2>
+        <em>{{ data.updated }}</em>
+        {{ data.text | safe }}
+    </div>
 </div>
 {% endfor %}
 {% endblock %}
