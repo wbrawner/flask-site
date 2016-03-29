@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6, #menu-icon {
 	text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
-* {
+a {
 	-webkit-transition: all 0.5s; /* Safari */
 	transition: all 0.5s;
 }
