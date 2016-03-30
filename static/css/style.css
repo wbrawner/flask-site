@@ -411,14 +411,8 @@ div#instafeed {
 	margin-right: 20px;
 }
 
-#contact p {
-    width: 50%;
-    display: inline-block;
-}
-
-p.contact-btns {
-    float: right;
-    text-align: right;
+#contact {
+	text-align: center;
 }
 
 a#menu-icon {
@@ -447,22 +441,6 @@ a.social-link:hover, a.social-link:active {
 .section a:hover, .section a:active {
     color: #fff;
     border-bottom: 1px solid rgba(255, 255, 255, 1);
-}
-
-.entry-footer {
-    border-radius: 50px;
-}
-
-.entry-footer span {
-    margin: auto 5px;
-}
-
-.entry-footer a:link, .entry-footer a:visited {
-    color: #5C995C;
-}
-
-.entry-footer a:hover, .entry-footer a:active {
-    color: #fff;
 }
 
 /* Admin Styles */
@@ -584,21 +562,14 @@ a.social-link:hover, a.social-link:active {
 
 @media all and (max-width: 870px) {
 	.one-third {
-		width: 45%;
-		margin: 5px 2.5% 40px;
+		width: 90%;
+		margin: 5px 5% 40px;
 	}
 }
 
 @media all and (max-width: 782px) {
 	.customize-support #nav, .customize-support .main-nav {
 		top: 46px;
-	}
-}
-
-@media all and (max-width: 700px) {
-	.one-third {
-		width: 90%;
-		margin: 5px 5% 40px;
 	}
 }
 

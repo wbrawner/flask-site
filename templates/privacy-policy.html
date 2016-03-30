@@ -1,0 +1,12 @@
+{% extends 'master.html' %}
+{% block body %}
+<div class="section-wrapper">
+    <div class="section" id="bio">
+        <h2>privacy policy</h2>
+	    <h3>the gist:</h3>
+	    <p>I use a tool called <a href="https://www.google.com/analytics/">Google Analytics</a>. It gives some basic information about my visitors. You can prevent my site and all sites from collecting this data about you, by using <a href="https://chrome.google.com/webstore/detail/google-analytics-opt-out/fllaojicojecljbmefodhfapmkghcbnh">an extension from Google</a>. I would also like to remind you that you are on the internet, and anything you post publicly could potentially be visible to anyone in the world. Any messages you send to me are delivered directly to my email, however, so I will only post the contents of those emails after requesting your permission.</p>
+	    <h3>the why:</h3>
+	    <p>I use Google Analytics mostly for curiosity's sake. I wanted to learn to use the tool and I am always curious about who is viewing my website. I use a minimalist version of the tool so I'm not selling your information and I don't really do anything with the information that's collected except look at it once in a blue moon. Feel free to <a href="{{ url_for('contact') }}">contact me</a> with any questions or concerns.</p>
+	</div>
+</div>
+{% endblock %}

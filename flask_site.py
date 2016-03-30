@@ -49,6 +49,10 @@ def home():
 def bio():
     return render_template('bio.html')
 
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')
+
 @app.route('/blog')
 def blog():
     g.db.execute('SELECT * FROM blog_posts ORDER BY id DESC')
